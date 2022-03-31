@@ -320,7 +320,7 @@ public class Steps extends BaseTest {
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
                         "        \"parent_id\": " + null + ",\r\n" +
-                        "        \"label\": \"" + "\"Company\"" + "\"\r\n" +
+                        "        \"label\": \"" + "Company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -342,7 +342,7 @@ public class Steps extends BaseTest {
                 .log()
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
-                        "    {   \"href\": \"" + "\"www.company.com\"" + "\",\r\n" +
+                        "    {   \"href\": \"" + "www.company.com" + "\",\r\n" +
                         "        \"parent_id\": \"" + 1 + "\",\r\n" +
                         "        \"label\": \"" + label + "\"\r\n" +
                         "            \r\n" +
@@ -413,7 +413,8 @@ public class Steps extends BaseTest {
                         "    }    \r\n" +
                         "}  ")
                 .expect()
-                .statusCode(500)
+                .statusCode(200)
+                .body("[0]", equalTo("Элемент с id'1' успешно изменен"))
                 .when()
                 .put(elements + "{id}/", id)
                 .prettyPeek()
@@ -662,6 +663,8 @@ public class Steps extends BaseTest {
         given()
                 .log()
                 .ifValidationFails()
+                .expect()
+                .body("[0]", equalTo("Элемент с id=1 нельзя удалить"))
                 .when()
                 .delete(elements + "1/")
                 .prettyPeek()

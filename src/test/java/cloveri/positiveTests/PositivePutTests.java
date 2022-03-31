@@ -31,7 +31,6 @@ public class PositivePutTests extends Steps {
         getStructure();
     }
 
-    @Disabled
     @Test
     @Description("Изменить 'href' у элемента с 'id' = 1")
     void putChangeElementWithId_1_Href() {
@@ -40,7 +39,6 @@ public class PositivePutTests extends Steps {
         getStructure();
     }
 
-    @Disabled
     @Test
     @Description("Изменить 'label' у элемента с 'id' = 1")
     void putChangeElementWithId_1_Label() {
