@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>cloveri_360_api</artifactId>
+    <artifactId>cloveri_360_tests</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -13,7 +13,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <rest-assured.version>4.5.1</rest-assured.version>
-        <allure.version>2.17.3</allure.version>
+        <allure-junit5.version>2.13.0</allure-junit5.version>
+        <allure-rest-assured.version>2.17.2</allure-rest-assured.version>
         <aspectj.version>1.9.4</aspectj.version>
         <lombok.version>1.18.22</lombok.version>
         <hamcrest.version>2.2</hamcrest.version>
@@ -58,7 +59,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
-            <version>${allure.version}</version>
+            <version>${allure-junit5.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -69,7 +70,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
-            <version>${allure.version}</version>
+            <version>${allure-rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -113,5 +114,6 @@
 
         </plugins>
     </build>
+
 
 </project>
