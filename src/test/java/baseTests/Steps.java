@@ -23,7 +23,6 @@ public class Steps extends BaseTests {
         String id1 = getIdElement(idStr1);
 //        idStr1 = getIdElements();
 //        String id1 = $(By.xpath("//*[@class=\"react-flow__node react-flow__node-special selectable\"][1]")).attr("data-id");
-        System.out.println(id1);
         return id1;
     }
 
@@ -46,7 +45,6 @@ public class Steps extends BaseTests {
 //        String id3 = $(By.xpath("//*[@class=\"react-flow__node react-flow__node-special selectable\"][3]")).attr("data-id");
         createDepartmentFirstInLevel(id3);
         String id4 = getIdElement(idStr1);
-        idStr1 = getIdElements();
 //        String id4 = $(By.xpath("//*[@class=\"react-flow__node react-flow__node-special selectable\"][4]")).attr("data-id");
         createDepartmentFirstInLevel(id4);
 //        String id5 = $(By.xpath("//*[@class=\"react-flow__node react-flow__node-special selectable\"][4]")).attr("data-id");

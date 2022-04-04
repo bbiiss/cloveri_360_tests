@@ -18,7 +18,6 @@ public class DeleteElementsTests extends Steps {
         id = createDepartmentOne("1");
         deleteElement(id);
         int n = $$(By.xpath("//*[@class=\"react-flow__node react-flow__node-special selectable\"]")).size();
-        System.out.println("n = " + n);
         assert n == 1;
     }
 
