@@ -16,7 +16,6 @@ public class DeleteElementsTests extends Steps {
     void deleteOneElement(String browser) {
         String id;
         id = createDepartmentOne("1");
-        System.out.println("id = " + id);
         deleteElement(id);
         int n = $$(By.xpath("//*[@class=\"react-flow__node react-flow__node-special selectable\"]")).size();
         System.out.println("n = " + n);

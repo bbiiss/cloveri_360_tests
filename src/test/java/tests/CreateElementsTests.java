@@ -71,7 +71,7 @@ public class CreateElementsTests extends Steps {
     @ValueSource(strings = {"chrome", "firefox"})
     void authorization(String browser) {
         Selenide.sleep(200);
-        shouldInputId_1("1", "Company");
+        shouldInputId_1("1", "Компания");
     }
 
 }
