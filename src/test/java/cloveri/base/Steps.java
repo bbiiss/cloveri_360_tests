@@ -46,8 +46,11 @@ public class Steps extends BaseTest {
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
-                        "        \"parent_id\": " + parent_id.toString() + ",\r\n" +
-                        "        \"label\": \"" + label + "\"\r\n" +
+                        "        \"parent_id\": " + parent_id + ",\r\n" +
+                        "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -75,7 +78,10 @@ public class Steps extends BaseTest {
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
                         "        \"parent_id\": " + parent_id + ",\r\n" +
-                        "        \"label\": \"" + label + "\"\r\n" +
+                        "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -101,28 +107,25 @@ public class Steps extends BaseTest {
     @Step ("Создать элемент. В запросе есть лишнее поле")
     protected void createElementWithExtraField(String href, Integer parent_id, String label, String field, String fieldName) {
 
-        String id = given()
+        given()
                 .header("Content-Type", "application/json")
                 .log()
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
-                        "        \"parent_id\": " + parent_id.toString() + ",\r\n" +
+                        "        \"parent_id\": " + parent_id + ",\r\n" +
                         "        \"label\": \"" + label + "\",\r\n" +
-                        "        \"field + \": " + fieldName + "\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\",\r\n" +
+                        "        \"field + \": \"" + fieldName + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
-                .expect()
-                .statusCode(200)
-                .body("href", equalTo(href))
-                .body("parent_id", equalTo(parent_id.toString()))
-                .body("label", equalTo(label))
                 .when()
                 .post(elements)
-                .prettyPeek()
-                .jsonPath()
-                .get("id");
+                .then()
+                .statusCode(200);
 
     }
 
@@ -134,8 +137,11 @@ public class Steps extends BaseTest {
                 .log()
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
-                        "    {   \"parent_id\": \"" + parent_id.toString() + "\",\r\n" +
+                        "    {   \"parent_id\": " + parent_id + ",\r\n" +
                         "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -152,23 +158,23 @@ public class Steps extends BaseTest {
     @Step ("Создать элемент. В запросе нет поля 'parent_id'")
     protected void createElementWithoutParentId(String href, String label) {
 
-        String id = given()
+        given()
                 .header("Content-Type", "application/json")
                 .log()
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
                         "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
-                .expect()
-                .statusCode(400)
                 .when()
                 .post(elements)
-                .prettyPeek()
-                .jsonPath()
-                .get("id");
+                .then()
+                .statusCode(500);
 
     }
 
@@ -180,8 +186,11 @@ public class Steps extends BaseTest {
                 .log()
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
-                        "    {     \"href\": \"" + href + "\",\r\n" +
-                        "          \"parent_id\": \"" + parent_id.toString() + "\",\r\n" +
+                        "    {   \"href\": \"" + href + "\",\r\n" +
+                        "        \"parent_id\": " + parent_id + ",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -205,7 +214,10 @@ public class Steps extends BaseTest {
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
                         "        \"parent_id\": " + parent_id + ",\r\n" +
-                        "        \"label\": \"" + label + "\"\r\n" +
+                        "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -230,7 +242,10 @@ public class Steps extends BaseTest {
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
                         "        \"parent_id\": " + parent_id + ",\r\n" +
-                        "        \"label\": \"" + label + "\"\r\n" +
+                        "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -270,6 +285,9 @@ public class Steps extends BaseTest {
                         "    {   \"href\": \"" + href + "\",\r\n" +
                         "        \"parent_id\": " + parent_id + ",\r\n" +
                         "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "        \"children\": [\"" + children + "]\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
@@ -292,8 +310,11 @@ public class Steps extends BaseTest {
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
-                        "        \"parent_id\": \"" + parent_id.toString() + "\",\r\n" +
-                        "        \"label\": \"" + label + "\"\r\n" +
+                        "        \"parent_id\": " + parent_id + ",\r\n" +
+                        "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -343,7 +364,7 @@ public class Steps extends BaseTest {
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + "www.company.com" + "\",\r\n" +
-                        "        \"parent_id\": \"" + 1 + "\",\r\n" +
+                        "        \"parent_id\": " + null + ",\r\n" +
                         "        \"label\": \"" + label + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
@@ -365,9 +386,13 @@ public class Steps extends BaseTest {
                 .log()
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
-                        "    {   \"href\": \"" + "\"www.comp_post_request.com\"" + "\",\r\n" +
-                        "        \"parent_id\": \"" + 1 + "\",\r\n" +
-                        "        \"label\": \"" + "\"Dep_2\"" + "\"\r\n" +
+                        "    {   \"href\": \"" + "www.my_company" + "\",\r\n" +
+                        "        \"parent_id\": " + 1 + ",\r\n" +
+                        "        \"label\": \"" + "\"Dep_2\"" + ",\"\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + ",\"\r\n" +
+                        "        \"children\": \"" + "[" + child_id + "]" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -431,7 +456,10 @@ public class Steps extends BaseTest {
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
                         "        \"parent_id\": " + parent_id + ",\r\n" +
-                        "        \"label\": \"" + label + "\"\r\n" +
+                        "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -452,7 +480,10 @@ public class Steps extends BaseTest {
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
                         "     {   \"parent_id\": " + parent_id + ",\r\n" +
-                        "        \"label\": \"" + label + "\"\r\n" +
+                        "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -472,7 +503,10 @@ public class Steps extends BaseTest {
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
                         "        \"href\": \"" + href + "\",\r\n" +
-                        "        \"label\": \"" + label + "\"\r\n" +
+                        "        \"label\": \"" + label + ",\"\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + "\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -493,7 +527,10 @@ public class Steps extends BaseTest {
                 .ifValidationFails()
                 .body("{\"element\":\r\n" +
                         "    {    \"href\": \"" + href + "\",\r\n" +
-                        "        \"parent_id\": " + parent_id + "\r\n" +
+                        "        \"parent_id\": " + parent_id + ",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + ",\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
@@ -532,7 +569,10 @@ public class Steps extends BaseTest {
                 .body("{\"element\":\r\n" +
                         "    {   \"href\": \"" + href + "\",\r\n" +
                         "        \"parent_id\": " + null + ",\r\n" +
-                        "        \"label\": \"" + label + "\"\r\n" +
+                        "        \"label\": \"" + label + "\",\r\n" +
+                        "        \"team_id\": \"" + "" + "\",\r\n" +
+                        "        \"company_id\": \"" + "test_1" + "\",\r\n" +
+                        "        \"company_name\": \"" + "my test company" + ",\"\r\n" +
                         "            \r\n" +
                         "    }    \r\n" +
                         "}  ")
